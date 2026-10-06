@@ -47,12 +47,13 @@ public class DrawingApp implements DrawingGUI{
 	public void init(ShapeCollectionInterface s) {
 		if(s==null) {_shapes = new ShapeCollection();}
 		else {_shapes = s.copy();}
-		GUIShapeable _gs = null;
-		Polygon2D _pp = null;
+		_gs = null;
+		_p1 = null;
+		_p2 = null;
 		_color = Color.blue;
 		_fill = false;
 		_mode = "";
-		Point2D _p1 = null;
+		pol.clear();
 	}
 	public void show(double d) {
 		StdDraw.setScale(0,d);
