@@ -1,4 +1,4 @@
-package Exe.Ex4.geo;
+package drawing.geo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import Exe.Ex4.Ex4_Const;
+import drawing.DrawingConstants;
 
 class Polygon2DTest {
 
@@ -82,7 +82,7 @@ class Polygon2DTest {
 		arr.add(new Point2D(1,4));
 		polygon = new Polygon2D(arr);
 		double f0 = polygon.perimeter();
-		assertEquals(f0, 11.6568542495, Ex4_Const .EPS1); 
+		assertEquals(f0, 11.6568542495, DrawingConstants .EPS1); 
 	}
 	
 	@Test
@@ -114,7 +114,7 @@ class Polygon2DTest {
 		arr.add(new Point2D(1,4));
 		polygon = new Polygon2D(arr);
 		double f0 = polygon.area();
-		assertEquals(f0, 4.0, Ex4_Const .EPS1);
+		assertEquals(f0, 4.0, DrawingConstants .EPS1);
 	}	
 
 	@Test
@@ -180,7 +180,7 @@ class Polygon2DTest {
 		polygon = new Polygon2D(arr);
 	    polygon.scale(p11, 0.9); //The parameter of the polygon should be 90% smaller
 	    double new_Perimeter = polygon.perimeter();
-	    assertEquals(new_Perimeter,11.6568542495 *0.9, Ex4_Const.EPS);
+	    assertEquals(new_Perimeter,11.6568542495 *0.9, DrawingConstants.EPS);
 	    arr = new ArrayList<Point2D>();
 		arr.add(new Point2D(1,2));
 		arr.add(new Point2D(2,3));
@@ -192,7 +192,7 @@ class Polygon2DTest {
 		polygon = new Polygon2D(arr);
 	    polygon.scale(p11, 1.1); //The perimeter of the polygon should be 110% larger
 	    new_Perimeter = polygon.perimeter();
-	    assertEquals(new_Perimeter, 11.6568542495*1.1, Ex4_Const.EPS);
+	    assertEquals(new_Perimeter, 11.6568542495*1.1, DrawingConstants.EPS);
 	     
 	 }
 
@@ -209,20 +209,20 @@ class Polygon2DTest {
 		polygon = new Polygon2D(arr);
 	    polygon.rotate(p1, Math.PI/2); //The polygon should rotate 90% degrees with respect to the origin point
 	    Point2D[] po = polygon.getPoints();
-	    assertEquals(po[0].x(), 3.5, Ex4_Const.EPS);
-	    assertEquals(po[0].y(), 2.5, Ex4_Const.EPS);
-	    assertEquals(po[1].x(), 2.5, Ex4_Const.EPS);
-	    assertEquals(po[1].y(), 3.5, Ex4_Const.EPS);
-	    assertEquals(po[2].x(), 3.5, Ex4_Const.EPS);
-	    assertEquals(po[2].y(), 4.5, Ex4_Const.EPS);
-	    assertEquals(po[3].x(), 0.5, Ex4_Const.EPS);
-	    assertEquals(po[3].y(), 4.5, Ex4_Const.EPS);
-	    assertEquals(po[4].x(), 1.5, Ex4_Const.EPS);
-	    assertEquals(po[4].y(), 3.5, Ex4_Const.EPS);
-	    assertEquals(po[5].x(), 0.5, Ex4_Const.EPS);
-	    assertEquals(po[5].y(), 3.5, Ex4_Const.EPS);
-	    assertEquals(po[6].x(), 1.5, Ex4_Const.EPS);
-	    assertEquals(po[6].y(), 2.5, Ex4_Const.EPS);
+	    assertEquals(po[0].x(), 3.5, DrawingConstants.EPS);
+	    assertEquals(po[0].y(), 2.5, DrawingConstants.EPS);
+	    assertEquals(po[1].x(), 2.5, DrawingConstants.EPS);
+	    assertEquals(po[1].y(), 3.5, DrawingConstants.EPS);
+	    assertEquals(po[2].x(), 3.5, DrawingConstants.EPS);
+	    assertEquals(po[2].y(), 4.5, DrawingConstants.EPS);
+	    assertEquals(po[3].x(), 0.5, DrawingConstants.EPS);
+	    assertEquals(po[3].y(), 4.5, DrawingConstants.EPS);
+	    assertEquals(po[4].x(), 1.5, DrawingConstants.EPS);
+	    assertEquals(po[4].y(), 3.5, DrawingConstants.EPS);
+	    assertEquals(po[5].x(), 0.5, DrawingConstants.EPS);
+	    assertEquals(po[5].y(), 3.5, DrawingConstants.EPS);
+	    assertEquals(po[6].x(), 1.5, DrawingConstants.EPS);
+	    assertEquals(po[6].y(), 2.5, DrawingConstants.EPS);
 	 }
 	 
 	

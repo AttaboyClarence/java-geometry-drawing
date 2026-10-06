@@ -1,10 +1,10 @@
-package Exe.Ex4.geo;
+package drawing.geo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import Exe.Ex4.Ex4_Const;
+import drawing.DrawingConstants;
 class SegmentTest {
 	
 	private Point2D p1 = new Point2D (1,1);
@@ -71,8 +71,8 @@ class SegmentTest {
 		Segment2D seg2 = new Segment2D (p3,p4);
 		double fx0 = seg1.perimeter();
 		double fx1 = seg2.perimeter();
-		assertEquals(fx0, 8.48528137423857, Ex4_Const.EPS1);
-		assertEquals(fx1, 11.313708498984761, Ex4_Const.EPS1);
+		assertEquals(fx0, 8.48528137423857, DrawingConstants.EPS1);
+		assertEquals(fx1, 11.313708498984761, DrawingConstants.EPS1);
 
 	}
 		@Test
@@ -102,11 +102,11 @@ class SegmentTest {
 			Segment2D seg1 = new Segment2D(p1, p2);
 			seg1.scale(toMove, 0.9); //The parameter of the segment should be 10% smaller (90% of the original segment)
 		     double new_Perimeter = seg1.perimeter();
-		     assertEquals(new_Perimeter, 8.48528137423857*0.9, Ex4_Const.EPS);
+		     assertEquals(new_Perimeter, 8.48528137423857*0.9, DrawingConstants.EPS);
 		     Segment2D seg2 = new Segment2D(p3, p4);
 		     seg2.scale(toMove, 1.1); //The parameter of the segment should be 10% larger (110% of the original segment)
 		     new_Perimeter = seg2.perimeter();
-		     assertEquals(new_Perimeter, 11.313708498984761*1.1, Ex4_Const.EPS);
+		     assertEquals(new_Perimeter, 11.313708498984761*1.1, DrawingConstants.EPS);
 			
 		}
 		@Test
@@ -117,10 +117,10 @@ class SegmentTest {
 			Segment2D seg1 = new Segment2D(p1, p2);
 			 seg1.rotate(center, Math.PI/2); //The Segment should rotate 90% degrees with respect to the origin point and complete and X from bottom right to top left.
 		     Point2D[] po = seg1.getPoints();
-		     assertEquals(po[0].x(), 4, Ex4_Const.EPS);
-		     assertEquals(po[0].y(), 1, Ex4_Const.EPS);
-		     assertEquals(po[1].x(), 1, Ex4_Const.EPS);
-		     assertEquals(po[1].y(), 4, Ex4_Const.EPS);
+		     assertEquals(po[0].x(), 4, DrawingConstants.EPS);
+		     assertEquals(po[0].y(), 1, DrawingConstants.EPS);
+		     assertEquals(po[1].x(), 1, DrawingConstants.EPS);
+		     assertEquals(po[1].y(), 4, DrawingConstants.EPS);
 			
 		}
 		@Test

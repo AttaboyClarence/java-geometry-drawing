@@ -1,4 +1,4 @@
-package Exe.Ex4;
+package drawing;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,28 +9,28 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import Exe.Ex4.geo.Circle2D;
-import Exe.Ex4.geo.GeoShapeable;
-import Exe.Ex4.geo.Point2D;
-import Exe.Ex4.geo.Rect2D;
+import drawing.geo.Circle2D;
+import drawing.geo.GeoShapeable;
+import drawing.geo.Point2D;
+import drawing.geo.Rect2D;
 
 /**
  * This class represents a collection of GUI_Shape.
- * Ex4: you should implement this class!
+ * DrawingApp: you should implement this class!
  * @author I2CS
  *
  */
-public class ShapeCollection implements ShapeCollectionable{
-    private ArrayList<GUI_Shapeable> _shapes;
+public class ShapeCollection implements ShapeCollectionInterface{
+    private ArrayList<GUIShapeable> _shapes;
     
     
     
     public ShapeCollection() {
-        _shapes = new ArrayList<GUI_Shapeable>();
+        _shapes = new ArrayList<GUIShapeable>();
         
     }
     @Override
-    public GUI_Shapeable get(int i) {
+    public GUIShapeable get(int i) {
         return _shapes.get(i);
     }
 
@@ -40,28 +40,28 @@ public class ShapeCollection implements ShapeCollectionable{
     }
 
     @Override
-    public GUI_Shapeable removeElementAt(int i) {
+    public GUIShapeable removeElementAt(int i) {
         
-        GUI_Shapeable g = this._shapes.get(i);
+        GUIShapeable g = this._shapes.get(i);
         this._shapes.remove(i);
         return g;
         
     }
 
     @Override
-    public void addAt(GUI_Shapeable s, int i) {
+    public void addAt(GUIShapeable s, int i) {
         
         this._shapes.add(i, s);
             
     }
     @Override
-    public void add(GUI_Shapeable s) {
+    public void add(GUIShapeable s) {
         if(s!=null && s.getShape()!=null) {
             _shapes.add(s);
         }
     }
     @Override
-    public ShapeCollectionable copy() {
+    public ShapeCollectionInterface copy() {
         
         ShapeCollection s = new ShapeCollection();
         for(int i=0;i<this.size();i++) {
@@ -72,7 +72,7 @@ public class ShapeCollection implements ShapeCollectionable{
     }
 
     @Override
-    public void sort(Comparator<GUI_Shapeable> comp) {
+    public void sort(Comparator<GUIShapeable> comp) {
        
         this._shapes.sort(comp);
         

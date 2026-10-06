@@ -1,9 +1,9 @@
-package Exe.Ex4.geo;
+package drawing.geo;
 
 /** 
  * This class represents a 2D circle in the plane. 
  * Please make sure you update it according to the GeoShape interface.
- * Ex4: you should update this class!
+ * DrawingApp: you should update this class!
  * @author boaz.benmoshe
  *
  */// Maybe add fill

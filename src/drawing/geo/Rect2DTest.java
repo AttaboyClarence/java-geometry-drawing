@@ -1,10 +1,10 @@
-package Exe.Ex4.geo;
+package drawing.geo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import Exe.Ex4.Ex4_Const;
+import drawing.DrawingConstants;
 
 class Rect2DTest {
 
@@ -65,8 +65,8 @@ class Rect2DTest {
 	     Rect2D rect2 = new Rect2D(p5,p6);
 		 double ans1 = rect1.area();
 	     double ans2 = rect2.area();
-	     assertEquals(ans1, 49, Ex4_Const.EPS);
-	     assertEquals(ans2, 10, Ex4_Const.EPS);    
+	     assertEquals(ans1, 49, DrawingConstants.EPS);
+	     assertEquals(ans2, 10, DrawingConstants.EPS);    
 	 }
 	 @Test
 	 void testPerimeter() {
@@ -74,8 +74,8 @@ class Rect2DTest {
 	     Rect2D rect2 = new Rect2D(p5,p6);
 	     double ans1 = rect1.perimeter();
 	     double ans2 = rect2.perimeter();
-	     assertEquals(ans1, 28, Ex4_Const.EPS);
-	     assertEquals(ans2, 14, Ex4_Const.EPS);    
+	     assertEquals(ans1, 28, DrawingConstants.EPS);
+	     assertEquals(ans2, 14, DrawingConstants.EPS);    
 	 }
 
 	 @Test
@@ -106,11 +106,11 @@ class Rect2DTest {
 		 Rect2D rect1 = new Rect2D(p1,p2);
 	     rect1.scale(origin, 0.9); //The parameter of the rectangle should be 90% smaller
 	     double new_Perimeter = rect1.perimeter();
-	     assertEquals(new_Perimeter, 28*0.9, Ex4_Const.EPS);
+	     assertEquals(new_Perimeter, 28*0.9, DrawingConstants.EPS);
 	     Rect2D rect2 = new Rect2D(p5,p6);
 	     rect2.scale(origin, 1.1); //The perimeter of the rectangle should be 110% larger
 	     new_Perimeter = rect2.perimeter();
-	     assertEquals(new_Perimeter, 14*1.1, Ex4_Const.EPS);
+	     assertEquals(new_Perimeter, 14*1.1, DrawingConstants.EPS);
 	     
 	 }
 

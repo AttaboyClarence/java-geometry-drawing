@@ -1,8 +1,8 @@
-package Exe.Ex4.geo;
+package drawing.geo;
 
 /**
  * This class represents a 2D rectangle (NOT necessarily axis parallel - this shape can be rotated!)
- * Ex4: you should implement this class!
+ * DrawingApp: you should implement this class!
  * @author I2CS
  *
  */
@@ -25,7 +25,6 @@ public class Rect2D implements GeoShapeable {
 	
 	@Override
 	public boolean contains(Point2D ot) {
-		// TODO Auto-generated method stub
 		// Each point that is between the two points'- on both length and width- is in the area of the rectangle.
 		return ((ot.x()>=this._topLeft.x()) && (ot.x() <= this._topRight.x()) && ot.y()<=this._topLeft.y() && (ot.y() >= this._lowRight.y()));
 	}
@@ -37,7 +36,6 @@ public class Rect2D implements GeoShapeable {
 	
 	@Override
 	public double area() {
-		// TODO Auto-generated method stub
 		// To find the area we must multiply the width and length of the rectangle.
 		double width = this._topRight.x()-this._topLeft.x();
 	    double length =this._topRight.y()-this._lowRight.y();
@@ -46,7 +44,6 @@ public class Rect2D implements GeoShapeable {
 
 	@Override
 	public double perimeter() {
-		// TODO Auto-generated method stub
 		double width = this._topRight.x()-this._topLeft.x();
 		double length = this._topRight.y()-this._lowLeft.y();
 		return 2*width+ 2*length;
@@ -54,7 +51,6 @@ public class Rect2D implements GeoShapeable {
 
 	@Override
 	public void move(Point2D vec) {
-		// TODO Auto-generated method stub
 		_topRight.move(vec);
 		_lowRight.move(vec);
 		_topLeft.move(vec);
@@ -64,7 +60,6 @@ public class Rect2D implements GeoShapeable {
 
 	@Override
     public GeoShapeable copy() {
-        // TODO Auto-generated method stub
         Rect2D r = new Rect2D (this._topRight, this._lowLeft);
         r._lowLeft = new Point2D(this._lowLeft);
         r._lowRight = new Point2D(this._lowRight);
@@ -76,7 +71,6 @@ public class Rect2D implements GeoShapeable {
 
 	 @Override
 	    public void scale(Point2D center, double ratio) {
-	        // TODO Auto-generated method stub
 	        this._topRight.scale(center, ratio);
 	        this._lowLeft.scale(center, ratio);
 	        this._lowRight.scale(center, ratio);
@@ -85,7 +79,6 @@ public class Rect2D implements GeoShapeable {
 
 	    @Override
 	    public void rotate(Point2D center, double angleDegrees) {
-	        // TODO Auto-generated method stub
 	        this._topLeft.rotate(center,angleDegrees);
 	        this._topRight.rotate(center, angleDegrees);
 	        this._lowLeft.rotate(center, angleDegrees);
@@ -95,14 +88,12 @@ public class Rect2D implements GeoShapeable {
 
 	@Override
 	public Point2D[] getPoints() {
-		// TODO Auto-generated method stub
 		Point2D [] arr = new Point2D[2];
 		arr[0] = this._lowLeft;
 		arr[1] = this._topRight;
 		return arr;
 	}
 	public double[] getx() {//// For the drawing with the polygon method.
-    // TODO Auto-generated method stub
     double[] arr = new double[4];
     arr[0] = this._lowLeft.x();
     arr[1] = this._topLeft.x();
@@ -114,7 +105,6 @@ public class Rect2D implements GeoShapeable {
 }
 
 	public double[] gety() { // For the drawing with the polygon method.
-    // TODO Auto-generated method stub
     double[] arr = new double[4];
     arr[0] = this._lowLeft.y();
     arr[1] = this._topLeft.y();

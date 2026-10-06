@@ -1,11 +1,11 @@
-package Exe.Ex4;
+package drawing;
 /**
- * This class represents a set of parameters for Ex4 GUI Shape application for:
+ * This class represents a set of parameters for DrawingApp GUI Shape application for:
  * Introduction to Computer Science 2022, Ariel University.
  * Do NOT change this class
  * @author boaz.benmoshe
  */
-public class Ex4_Const {
+public class DrawingConstants {
 	public static final double EPS1 = 0.001, EPS2=Math.pow(EPS1, 2), EPS = EPS2;
 	// Constant flags for sorting. 
 	private static int count = 0;

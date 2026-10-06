@@ -1,10 +1,10 @@
-package Exe.Ex4.geo;
+package drawing.geo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import Exe.Ex4.Ex4_Const;
+import drawing.DrawingConstants;
 
 class Triangle2DTest {
     
@@ -49,15 +49,15 @@ class Triangle2DTest {
  void testArea() {
      double ans1 = t1.area();
      double ans2 = t2.area();
-     assertEquals(ans1, 18, Ex4_Const.EPS);
-     assertEquals(ans2, 76, Ex4_Const.EPS);    
+     assertEquals(ans1, 18, DrawingConstants.EPS);
+     assertEquals(ans2, 76, DrawingConstants.EPS);    
  }
  @Test
  void testPerimeter() {
      double ans1 = t1.perimeter();
      double ans2 = t2.perimeter();
-     assertEquals(ans1, 20.485281, Ex4_Const.EPS);
-     assertEquals(ans2, 80.958586, Ex4_Const.EPS);    
+     assertEquals(ans1, 20.485281, DrawingConstants.EPS);
+     assertEquals(ans2, 80.958586, DrawingConstants.EPS);    
  }
 
  @Test
@@ -86,11 +86,11 @@ class Triangle2DTest {
      
      t1.scale(p11, 0.9); //The parameter of the triangle should be 90% smaller
      double new_Perimeter = t1.perimeter();
-     assertEquals(new_Perimeter, 20.485281*0.9, Ex4_Const.EPS);
+     assertEquals(new_Perimeter, 20.485281*0.9, DrawingConstants.EPS);
      
      t2.scale(p11, 1.1); //The perimeter of the triangle should be 110% larger
      new_Perimeter = t2.perimeter();
-     assertEquals(new_Perimeter, 80.958586*1.1, Ex4_Const.EPS);
+     assertEquals(new_Perimeter, 80.958586*1.1, DrawingConstants.EPS);
      
  }
 
@@ -99,12 +99,12 @@ class Triangle2DTest {
      
      t1.rotate(origin, Math.PI/2); //The triangle should rotate 90% degrees with respect to the origin point
      Point2D[] po = t1.getPoints();
-     assertEquals(po[0].x(), 0, Ex4_Const.EPS);
-     assertEquals(po[0].y(), 0, Ex4_Const.EPS);
-     assertEquals(po[1].x(), -6, Ex4_Const.EPS);
-     assertEquals(po[1].y(), 0, Ex4_Const.EPS);
-     assertEquals(po[2].x(), 0, Ex4_Const.EPS);
-     assertEquals(po[2].y(), 6, Ex4_Const.EPS);
+     assertEquals(po[0].x(), 0, DrawingConstants.EPS);
+     assertEquals(po[0].y(), 0, DrawingConstants.EPS);
+     assertEquals(po[1].x(), -6, DrawingConstants.EPS);
+     assertEquals(po[1].y(), 0, DrawingConstants.EPS);
+     assertEquals(po[2].x(), 0, DrawingConstants.EPS);
+     assertEquals(po[2].y(), 6, DrawingConstants.EPS);
  }
  @Test
  void testGetPoints() {

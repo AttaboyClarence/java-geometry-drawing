@@ -1,21 +1,21 @@
-package Exe.Ex4;
+package drawing;
 /**
  * This interface represents GUI drawable Shape, 
  * with color, tag and fill values.
  * It contains a reference to a Geometric shape.
- *  Ex4: you should NOT change this interface!
+ *  DrawingApp: you should NOT change this interface!
  * @author boaz.benmoshe
  */
 import java.awt.Color;
 
-import Exe.Ex4.geo.GeoShapeable;
+import drawing.geo.GeoShapeable;
 /**
  * This interface represents a GUI shape with meta data of color, fill/empty and tag.
  * It also contains a geometric shape (GeoShape).
- *  Ex4: you should NOT change this interface!
+ *  DrawingApp: you should NOT change this interface!
  * @author boaz.benmoshe
  */
-public interface GUI_Shapeable {
+public interface GUIShapeable {
 	/**
 	 * Returns the geo shape contains in this class.
 	 * @return
@@ -60,7 +60,7 @@ public interface GUI_Shapeable {
 	 * Returns a new shape.
 	 * @return
 	 */
-	public GUI_Shapeable copy();
+	public GUIShapeable copy();
 	/**
 	 * Returns a "selection" value - each shape can be selected or not selected.
 	 * @return

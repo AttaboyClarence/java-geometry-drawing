@@ -1,11 +1,11 @@
-package Exe.Ex4;
+package drawing;
 import java.awt.Color;
 
-import Exe.Ex4.geo.Circle2D;
-import Exe.Ex4.geo.Point2D;
-import Exe.Ex4.gui.Ex4;
+import drawing.geo.Circle2D;
+import drawing.geo.Point2D;
+import drawing.gui.DrawingApp;
 /**
- * A very simple main class for basic code for Ex4
+ * A very simple main class for basic code for DrawingApp
  * 
  * t2: output:
  * GUIShape,0,true,1,Circle2D,3.0,4.0, 2.0
@@ -14,7 +14,7 @@ import Exe.Ex4.gui.Ex4;
  * @author boaz.ben-moshe
  *
  */
-public class Ex4Main {
+public class Main {
 
 	public static void main(String[] args) {
 		t2();
@@ -23,19 +23,19 @@ public class Ex4Main {
 	}
 	// Minimal empty frame (no shapes)
 	public static void t1() {
-		Ex4 ex4 = Ex4.getInstance();
+		DrawingApp ex4 = DrawingApp.getInstance();
 		ex4.show();
 	} 
 	// Two simple circles
 	public static void t2() {
-		Ex4 ex4 = Ex4.getInstance();
-		ShapeCollectionable shapes = ex4.getShape_Collection();
+		DrawingApp ex4 = DrawingApp.getInstance();
+		ShapeCollectionInterface shapes = ex4.getShape_Collection();
 		Point2D p1 = new Point2D(3,4);
 		Point2D p2 = new Point2D(6,8);
 		Circle2D c1 = new Circle2D(p1,2);
 		Circle2D c2 = new Circle2D(p2,4);
-		GUI_Shapeable gs1 = new GUIShape(c1, true, Color.black, 1);
-		GUI_Shapeable gs2 = new GUIShape(c2, false, Color.blue, 2);
+		GUIShapeable gs1 = new GUIShape(c1, true, Color.black, 1);
+		GUIShapeable gs2 = new GUIShape(c2, false, Color.blue, 2);
 		shapes.add(gs1);
 		shapes.add(gs2);
 		ex4.show();
@@ -43,8 +43,8 @@ public class Ex4Main {
 	}
 	// Loads a file from file 'sample_drawing.txt' (Circles only).
 	public static void t3() {
-		Ex4 ex4 = Ex4.getInstance();
-		ShapeCollectionable shapes = ex4.getShape_Collection();
+		DrawingApp ex4 = DrawingApp.getInstance();
+		ShapeCollectionInterface shapes = ex4.getShape_Collection();
 		String file = "sample_drawing.txt"; 
 		shapes.load(file);
 		ex4.init(shapes);

@@ -1,4 +1,4 @@
-package Exe.Ex4.gui;
+package drawing.gui;
 
 //package stdDraw;
 // https://introcs.cs.princeton.edu/java/stdlib/StdDraw.java.html
@@ -67,10 +67,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import Exe.Ex4.geo.Point2D;
+import drawing.geo.Point2D;
 
 /**
- * Ex4: Do NOT change this class!
+ * DrawingApp: Do NOT change this class!
  */
 /**
  *  The {@code StdDraw} class provides a basic capability for
@@ -475,7 +475,7 @@ import Exe.Ex4.geo.Point2D;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public final class StdDraw_Ex4 implements ActionListener, MouseListener, MouseMotionListener, KeyListener {
+public final class StdDraw implements ActionListener, MouseListener, MouseMotionListener, KeyListener {
 
 	/**
 	 *  The color black.
@@ -613,7 +613,7 @@ public final class StdDraw_Ex4 implements ActionListener, MouseListener, MouseMo
 	private static Graphics2D offscreen, onscreen;
 
 	// singleton for callbacks: avoids generation of extra .class files
-	private static StdDraw_Ex4 std = new StdDraw_Ex4();
+	private static StdDraw std = new StdDraw();
 
 	// the frame for drawing to the screen
 	private static JFrame frame;
@@ -629,9 +629,9 @@ public final class StdDraw_Ex4 implements ActionListener, MouseListener, MouseMo
 	// set of key codes currently pressed down
 	private static TreeSet<Integer> keysDown = new TreeSet<Integer>();
 
-	private static Ex4 _ex4 = Ex4.getInstance();
+	private static DrawingApp _ex4 = DrawingApp.getInstance();
 	// singleton pattern: client can't instantiate
-	private StdDraw_Ex4() { }
+	private StdDraw() { }
 
 
 	// static initializer
@@ -705,7 +705,7 @@ public final class StdDraw_Ex4 implements ActionListener, MouseListener, MouseMo
 		getFrame().setResizable(false);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);            // closes all windows
 		// frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      // closes only current window
-		getFrame().setTitle("Ex4 I2CS (Ariel) based on Standard Draw");
+		getFrame().setTitle("DrawingApp I2CS (Ariel) based on Standard Draw");
 		getFrame().setJMenuBar(createMenuBar());
 		getFrame().pack();
 		getFrame().requestFocusInWindow();
@@ -1057,7 +1057,7 @@ public final class StdDraw_Ex4 implements ActionListener, MouseListener, MouseMo
 	 */
 	public static void setFont(Font font) {
 		if (font == null) throw new IllegalArgumentException();
-		StdDraw_Ex4.font = font;
+		StdDraw.font = font;
 	}
 
 
@@ -1388,14 +1388,14 @@ public final class StdDraw_Ex4 implements ActionListener, MouseListener, MouseMo
 
 		// in case file is inside a .jar (classpath relative to StdDraw)
 		if ((icon == null) || (icon.getImageLoadStatus() != MediaTracker.COMPLETE)) {
-			URL url = StdDraw_Ex4.class.getResource(filename);
+			URL url = StdDraw.class.getResource(filename);
 			if (url != null)
 				icon = new ImageIcon(url);
 		}
 
 		// in case file is inside a .jar (classpath relative to root of jar)
 		if ((icon == null) || (icon.getImageLoadStatus() != MediaTracker.COMPLETE)) {
-			URL url = StdDraw_Ex4.class.getResource("/" + filename);
+			URL url = StdDraw.class.getResource("/" + filename);
 			if (url == null) throw new IllegalArgumentException("image " + filename + " not found");
 			icon = new ImageIcon(url);
 		}
@@ -1773,11 +1773,11 @@ public final class StdDraw_Ex4 implements ActionListener, MouseListener, MouseMo
 		String ev = e.getActionCommand();
 		System.out.println("EC: "+ ev);
 	/**	if(ev.equals("Save")) {
-		FileDialog chooser = new FileDialog(StdDraw_Ex4.frame, "Use a .png or .jpg extension", FileDialog.SAVE);
+		FileDialog chooser = new FileDialog(StdDraw.frame, "Use a .png or .jpg extension", FileDialog.SAVE);
 		chooser.setVisible(true);
 		String filename = chooser.getFile();
 		if (filename != null) {
-			StdDraw_Ex4.save(chooser.getDirectory() + File.separator + chooser.getFile());
+			StdDraw.save(chooser.getDirectory() + File.separator + chooser.getFile());
 		}
 		}*/
 		_ex4.actionPerformed(ev);
@@ -1866,8 +1866,8 @@ public final class StdDraw_Ex4 implements ActionListener, MouseListener, MouseMo
 	@Override
 	public void mousePressed(MouseEvent e) {
 		synchronized (mouseLock) {
-			mouseX = StdDraw_Ex4.userX(e.getX());
-			mouseY = StdDraw_Ex4.userY(e.getY());
+			mouseX = StdDraw.userX(e.getX());
+			mouseY = StdDraw.userY(e.getY());
 			isMousePressed = true;
 			int b = e.getButton();
 			System.out.println("Mouse: "+mouseX+","+mouseY+b);
@@ -1883,7 +1883,7 @@ public final class StdDraw_Ex4 implements ActionListener, MouseListener, MouseMo
 		}
 		//StdDraw.ellipse(0.3, 0.5, 0.1, 0.2);
 		//StdDraw.clear();
-		StdDraw_Ex4.draw();
+		StdDraw.draw();
 	}
 
 	/**
@@ -1902,8 +1902,8 @@ public final class StdDraw_Ex4 implements ActionListener, MouseListener, MouseMo
 	@Override
 	public void mouseDragged(MouseEvent e)  {
 		synchronized (mouseLock) {
-			mouseX = StdDraw_Ex4.userX(e.getX());
-			mouseY = StdDraw_Ex4.userY(e.getY());
+			mouseX = StdDraw.userX(e.getX());
+			mouseY = StdDraw.userY(e.getY());
 			
 		}
 	}
@@ -1914,8 +1914,8 @@ public final class StdDraw_Ex4 implements ActionListener, MouseListener, MouseMo
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		synchronized (mouseLock) {
-			mouseX = StdDraw_Ex4.userX(e.getX());
-			mouseY = StdDraw_Ex4.userY(e.getY());
+			mouseX = StdDraw.userX(e.getX());
+			mouseY = StdDraw.userY(e.getY());
 			_ex4.mouseMoved(e);
 		}
 	}
@@ -2016,33 +2016,33 @@ public final class StdDraw_Ex4 implements ActionListener, MouseListener, MouseMo
 	 * @param args the command-line arguments
 	 */
 	public static void main(String[] args) {
-		StdDraw_Ex4.square(0.2, 0.8, 0.1);
-		StdDraw_Ex4.filledSquare(0.8, 0.8, 0.2);
-		StdDraw_Ex4.circle(0.8, 0.2, 0.2);
+		StdDraw.square(0.2, 0.8, 0.1);
+		StdDraw.filledSquare(0.8, 0.8, 0.2);
+		StdDraw.circle(0.8, 0.2, 0.2);
 
-		StdDraw_Ex4.setPenColor(StdDraw_Ex4.BOOK_RED);
-		StdDraw_Ex4.setPenRadius(0.02);
-		StdDraw_Ex4.arc(0.8, 0.2, 0.1, 200, 45);
+		StdDraw.setPenColor(StdDraw.BOOK_RED);
+		StdDraw.setPenRadius(0.02);
+		StdDraw.arc(0.8, 0.2, 0.1, 200, 45);
 
 		// draw a blue diamond
-		StdDraw_Ex4.setPenRadius();
-		StdDraw_Ex4.setPenColor(StdDraw_Ex4.BOOK_BLUE);
+		StdDraw.setPenRadius();
+		StdDraw.setPenColor(StdDraw.BOOK_BLUE);
 		double[] x = { 0.1, 0.2, 0.3, 0.2 };
 		double[] y = { 0.2, 0.3, 0.2, 0.1 };
-		StdDraw_Ex4.filledPolygon(x, y);
+		StdDraw.filledPolygon(x, y);
 
 		// text
-		StdDraw_Ex4.setPenColor(StdDraw_Ex4.BLACK);
-		StdDraw_Ex4.text(0.2, 0.5, "black text");
-		StdDraw_Ex4.setPenColor(StdDraw_Ex4.WHITE);
-		StdDraw_Ex4.text(0.8, 0.8, "white text");
+		StdDraw.setPenColor(StdDraw.BLACK);
+		StdDraw.text(0.2, 0.5, "black text");
+		StdDraw.setPenColor(StdDraw.WHITE);
+		StdDraw.text(0.8, 0.8, "white text");
 		
-		StdDraw_Ex4.setPenColor(StdDraw_Ex4.BOOK_BLUE);
-		StdDraw_Ex4.rectangle(0.5, 0.7, 0.2, 0.1);
+		StdDraw.setPenColor(StdDraw.BOOK_BLUE);
+		StdDraw.rectangle(0.5, 0.7, 0.2, 0.1);
 		double[] xx = {0.2,0.4,0.5};
 		double[] yy = {0.8,0.4,0.5};
-		StdDraw_Ex4.filledPolygon(xx, yy);
-		StdDraw_Ex4.ellipse(0.7, 0.5, 0.2, 0.1);
+		StdDraw.filledPolygon(xx, yy);
+		StdDraw.ellipse(0.7, 0.5, 0.2, 0.1);
 	}
 
 	public static JFrame getFrame() {
@@ -2050,7 +2050,7 @@ public final class StdDraw_Ex4 implements ActionListener, MouseListener, MouseMo
 	}
 
 	public static void setFrame(JFrame frame) {
-		StdDraw_Ex4.frame = frame;
+		StdDraw.frame = frame;
 	}
 
 }

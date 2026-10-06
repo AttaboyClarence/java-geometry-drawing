@@ -1,4 +1,4 @@
-package Exe.Ex4;
+package drawing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,14 +8,14 @@ import java.util.Iterator;
 
 import org.junit.jupiter.api.Test;
 
-import Exe.Ex4.geo.Circle2D;
-import Exe.Ex4.geo.GeoShapeable;
-import Exe.Ex4.geo.Point2D;
-import Exe.Ex4.geo.Polygon2D;
-import Exe.Ex4.geo.Rect2D;
-import Exe.Ex4.geo.Segment2D;
-import Exe.Ex4.geo.ShapeComp;
-import Exe.Ex4.geo.Triangle2D;
+import drawing.geo.Circle2D;
+import drawing.geo.GeoShapeable;
+import drawing.geo.Point2D;
+import drawing.geo.Polygon2D;
+import drawing.geo.Rect2D;
+import drawing.geo.Segment2D;
+import drawing.geo.ShapeComp;
+import drawing.geo.Triangle2D;
 
 class ShapeCollectionTest {
 
@@ -105,7 +105,7 @@ class ShapeCollectionTest {
 		shapes.add(g4);
 		shapes.add(g5);
 		assertEquals(shapes.size(), 5);
-		GUI_Shapeable g = shapes.removeElementAt(3);
+		GUIShapeable g = shapes.removeElementAt(3);
 		assertTrue(g.getShape() instanceof Polygon2D);
 		assertFalse(g.isFilled());
 		assertEquals(g.getColor(), Color.RED);
@@ -187,7 +187,7 @@ class ShapeCollectionTest {
 		shapes.add(g3);
 		shapes.add(g4);
 		shapes.add(g5);
-		ShapeCollectionable new_shapes = shapes.copy();
+		ShapeCollectionInterface new_shapes = shapes.copy();
 
 		assertEquals(shapes.size(), new_shapes.size());
 		assertEquals(shapes.get(0).toString(), new_shapes.get(0).toString());
@@ -222,14 +222,14 @@ class ShapeCollectionTest {
 		shapes.add(g4);
 		shapes.add(g5);
 
-		ShapeComp c1 = new ShapeComp(Ex4_Const.Sort_By_Area);
-		ShapeComp c2 = new ShapeComp(Ex4_Const.Sort_By_Anti_Area);
-		ShapeComp c3 = new ShapeComp(Ex4_Const.Sort_By_Perimeter);
-		ShapeComp c4 = new ShapeComp(Ex4_Const.Sort_By_Anti_Perimeter);
-		ShapeComp c5 = new ShapeComp(Ex4_Const.Sort_By_toString);
-		ShapeComp c6 = new ShapeComp(Ex4_Const.Sort_By_Anti_toString);
-		ShapeComp c7 = new ShapeComp(Ex4_Const.Sort_By_Tag);
-		ShapeComp c8 = new ShapeComp(Ex4_Const.Sort_By_Anti_Tag);
+		ShapeComp c1 = new ShapeComp(DrawingConstants.Sort_By_Area);
+		ShapeComp c2 = new ShapeComp(DrawingConstants.Sort_By_Anti_Area);
+		ShapeComp c3 = new ShapeComp(DrawingConstants.Sort_By_Perimeter);
+		ShapeComp c4 = new ShapeComp(DrawingConstants.Sort_By_Anti_Perimeter);
+		ShapeComp c5 = new ShapeComp(DrawingConstants.Sort_By_toString);
+		ShapeComp c6 = new ShapeComp(DrawingConstants.Sort_By_Anti_toString);
+		ShapeComp c7 = new ShapeComp(DrawingConstants.Sort_By_Tag);
+		ShapeComp c8 = new ShapeComp(DrawingConstants.Sort_By_Anti_Tag);
 
 		// Sort_By_Area
 		shapes.sort(c1);

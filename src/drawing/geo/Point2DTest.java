@@ -1,10 +1,10 @@
-package Exe.Ex4.geo;
+package drawing.geo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import Exe.Ex4.Ex4_Const;
+import drawing.DrawingConstants;
 
 class Point2DTest {
     
@@ -107,7 +107,7 @@ class Point2DTest {
      * tests that the distance between p1 and the origin = 5.682429
      */
     void testDistance() {
-        assertEquals(p1.distance(), 5.682429, Ex4_Const.EPS);
+        assertEquals(p1.distance(), 5.682429, DrawingConstants.EPS);
     }
 
     @Test
@@ -115,7 +115,7 @@ class Point2DTest {
      * tests that the distance between p1 and p2 = 5.3600373
      */
     void testDistancePoint2D() {
-        assertEquals(p1.distance(p2), 5.3600373, Ex4_Const.EPS);
+        assertEquals(p1.distance(p2), 5.3600373, DrawingConstants.EPS);
     }
 
     @Test
@@ -143,7 +143,7 @@ class Point2DTest {
         Point2D pp = new Point2D(2.7000001,5.0000001);
         boolean eq1 = p.close2equals(p1, 1.42);
         boolean eq2 = p.close2equals(p2, 1.42);
-        boolean eq3 = pp.close2equals(p1, Ex4_Const.EPS);
+        boolean eq3 = pp.close2equals(p1, DrawingConstants.EPS);
         assertTrue(eq1);
         assertFalse(eq2);
         assertTrue(eq3);
@@ -151,7 +151,7 @@ class Point2DTest {
 
     @Test
     /**
-     * Tests that both close2equals functions return the same value when eps = Ex4_Const.EPS
+     * Tests that both close2equals functions return the same value when eps = DrawingConstants.EPS
      * 
      */
     void testClose2equalsPoint2D() {

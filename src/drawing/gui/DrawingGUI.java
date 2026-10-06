@@ -1,23 +1,23 @@
-package Exe.Ex4.gui;
+package drawing.gui;
 
-import Exe.Ex4.ShapeCollectionable;
+import drawing.ShapeCollectionInterface;
 
 /**
  * This interface represents a simple GUI drawer which uses StdDraw to draw a gui_shape_collection. 
- *  Ex4: you should NOT change this interface!
+ *  DrawingApp: you should NOT change this interface!
  * @author boaz.benmoshe
  */
-public interface Ex4_GUI {
+public interface DrawingGUI {
 	/**
 	 * Updates the collection of shapes to g.
 	 * @param g
 	 */
-	public void init(ShapeCollectionable g);
+	public void init(ShapeCollectionInterface g);
 	/**
 	 * Returns the collection of shapes.
 	 * @return
 	 */
-	public ShapeCollectionable getShape_Collection();
+	public ShapeCollectionInterface getShape_Collection();
 	/**
 	 * Shows the GUI window with the collection of shapes.
 	 */

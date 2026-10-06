@@ -1,7 +1,7 @@
-package Exe.Ex4;
+package drawing;
 import java.util.Comparator;
 
-import Exe.Ex4.geo.Rect2D;
+import drawing.geo.Rect2D;
 
 /**
  * This interface represents a collection of gui_shapes with the following capabilities:
@@ -10,17 +10,17 @@ import Exe.Ex4.geo.Rect2D;
  * 3. remove a single or all gui_shapes.
  * 4. sort the gui_shapes according to shape Comparator
  * 5. computes the bounding box containing all the shapes as a minimal 2D rectangle.
- *  Ex4: you should NOT change this interface!
+ *  DrawingApp: you should NOT change this interface!
  * @author boaz.benmoshe
  *
  */
-public interface ShapeCollectionable {
+public interface ShapeCollectionInterface {
 	/** 
 	 * This method return a reference to the i'th element in the collection.
 	 * @param i - the index of the element
 	 * @return a reference (NOT a copy) for the i'th element in the collection.
 	 */
-	public GUI_Shapeable get(int i);
+	public GUIShapeable get(int i);
 	/**
 	 * return the size of the collection (if empty return 0).
 	 * @return
@@ -32,13 +32,13 @@ public interface ShapeCollectionable {
 	 * @param i - the index of the element to be removed.
 	 * @return the gui_shape which was removed
 	 */
-	public GUI_Shapeable removeElementAt(int i);
+	public GUIShapeable removeElementAt(int i);
 	/**
 	 * This method adds the gui_element s to this collection in the last position.
 	 * Note: the method adds s "as is" (NOT a new copy of s).
 	 * @param s - the gui_shape
 	 */
-	void add(GUI_Shapeable s);
+	void add(GUIShapeable s);
 	/**
 	 * This method adds the gui_element s to this collection in the i'th position.
 	 * Note: the method adds s "as is" (NOT a new copy of s).
@@ -46,18 +46,18 @@ public interface ShapeCollectionable {
 	 * @param i - the location (index) in which s should be added
 	 */
 	
-	public void addAt(GUI_Shapeable s, int i);
+	public void addAt(GUIShapeable s, int i);
 	/**
 	 * This method constructs a deep copy of this collection.
 	 * Note: the two collections are equal - yet they have no shared memory. 
 	 * @return
 	 */
-	public ShapeCollectionable copy();
+	public ShapeCollectionInterface copy();
 	/** This method sorts this gui_shape collection according to the comp Comparator - in increasing order.
 	 * 
 	 * @param comp a linear order over gui_sahpes as defined in java.util.Comparator
 	 */
-	public void sort(Comparator<GUI_Shapeable> comp);
+	public void sort(Comparator<GUIShapeable> comp);
 	/**
 	 * This method simple removes all the elements from this collection.
 	 */

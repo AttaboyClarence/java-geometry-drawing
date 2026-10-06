@@ -1,4 +1,4 @@
-package Exe.Ex4.gui;
+package drawing.gui;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -8,19 +8,19 @@ import java.util.LinkedList;
 
 import javax.swing.JFileChooser;
 
-import Exe.Ex4.Ex4_Const;
-import Exe.Ex4.GUIShape;
-import Exe.Ex4.GUI_Shapeable;
-import Exe.Ex4.ShapeCollection;
-import Exe.Ex4.ShapeCollectionable;
-import Exe.Ex4.geo.Circle2D;
-import Exe.Ex4.geo.GeoShapeable;
-import Exe.Ex4.geo.Point2D;
-import Exe.Ex4.geo.Polygon2D;
-import Exe.Ex4.geo.Rect2D;
-import Exe.Ex4.geo.Segment2D;
-import Exe.Ex4.geo.ShapeComp;
-import Exe.Ex4.geo.Triangle2D;
+import drawing.DrawingConstants;
+import drawing.GUIShape;
+import drawing.GUIShapeable;
+import drawing.ShapeCollection;
+import drawing.ShapeCollectionInterface;
+import drawing.geo.Circle2D;
+import drawing.geo.GeoShapeable;
+import drawing.geo.Point2D;
+import drawing.geo.Polygon2D;
+import drawing.geo.Rect2D;
+import drawing.geo.Segment2D;
+import drawing.geo.ShapeComp;
+import drawing.geo.Triangle2D;
 
 /**
  * 
@@ -30,26 +30,24 @@ import Exe.Ex4.geo.Triangle2D;
  * "Singleton-like" implementation.
  * @author boaz.benmoshe
  *
- *ID1: 208846642
- *ID2: 316289495
  */
-public class Ex4 implements Ex4_GUI{
-	private  ShapeCollectionable _shapes = new ShapeCollection();
-	private  GUI_Shapeable _gs;
+public class DrawingApp implements DrawingGUI{
+	private  ShapeCollectionInterface _shapes = new ShapeCollection();
+	private  GUIShapeable _gs;
 	private  Color _color = Color.blue;
 	private  boolean _fill = false;
 	private  String _mode = "";
 	private  Point2D _p1, _p2;
-	private  static Ex4 _winEx4 = null;
+	private  static DrawingApp _winEx4 = null;
 	private static int _tag = 1; // We chose that every time  we create a new shape independently - we will get a new tag. A shape created as a copy - will not get a new tag but will have an equal to the one created from.
-	private Ex4() {
+	private DrawingApp() {
 			init(null);
 	}
 	
-	public void init(ShapeCollectionable s) {
+	public void init(ShapeCollectionInterface s) {
 		if(s==null) {_shapes = new ShapeCollection();}
 		else {_shapes = s.copy();}
-		GUI_Shapeable _gs = null;
+		GUIShapeable _gs = null;
 		Polygon2D _pp = null;
 		_color = Color.blue;
 		_fill = false;
@@ -57,36 +55,36 @@ public class Ex4 implements Ex4_GUI{
 		Point2D _p1 = null;
 	}
 	public void show(double d) {
-		StdDraw_Ex4.setScale(0,d);
-		StdDraw_Ex4.show();
+		StdDraw.setScale(0,d);
+		StdDraw.show();
 		drawShapes();
 	}
-	public static Ex4 getInstance() {
+	public static DrawingApp getInstance() {
 		if(_winEx4 ==null) {
-			_winEx4 = new Ex4();
+			_winEx4 = new DrawingApp();
 		}
 		return _winEx4;
 	}
 	// This is the main function that gathers all the details on the major list - shape collection, and draws.
 	public void drawShapes() {
-		StdDraw_Ex4.clear();
+		StdDraw.clear();
 		for(int i=0;i<_shapes.size();i++) { 
-			GUI_Shapeable sh = _shapes.get(i); //		
+			GUIShapeable sh = _shapes.get(i); //		
 				drawShape(sh);
 			}
 			if(_gs!=null) {drawShape(_gs);}
-		StdDraw_Ex4.show();
+		StdDraw.show();
 	}
 	// The instance of every shape- how to draw it. We receive from the 
 	// Gui Shapable all the aspects of the the shape- which shape it is,
 	// which color, and if it meant to be filled. - And with that we will go
 	// to make the drawing happen according to the Std_draw rules for that shape
 	// The GeoShapable class - is the actual shape- without the drawing aspects.
-	private static void drawShape(GUI_Shapeable g) {				 
+	private static void drawShape(GUIShapeable g) {				 
 		if (g == null ||g.getShape()==null)// In case there was no drawing. (In the class Shapecollection - there will be a print -"You didn't draw a shape" 
 			return;
-		StdDraw_Ex4.setPenColor(g.getColor());						
-		if(g.isSelected()) {StdDraw_Ex4.setPenColor(Color.gray);}	
+		StdDraw.setPenColor(g.getColor());						
+		if(g.isSelected()) {StdDraw.setPenColor(Color.gray);}	
 		GeoShapeable gs = g.getShape();								
 		boolean isFill = g.isFilled();								
 		if(gs instanceof Circle2D) { 
@@ -94,27 +92,27 @@ public class Ex4 implements Ex4_GUI{
 			Point2D cen = c.getPoints()[0];
 			double rad = c.getRadius();
 			if(isFill) {
-				StdDraw_Ex4.filledCircle(cen.x(), cen.y(), rad);
+				StdDraw.filledCircle(cen.x(), cen.y(), rad);
 			}
 			else { 
-				StdDraw_Ex4.circle(cen.x(), cen.y(), rad);
+				StdDraw.circle(cen.x(), cen.y(), rad);
 				}
 			}		
 		if(gs instanceof Segment2D) {
 			Segment2D seg = (Segment2D)gs;
 			Point2D firstP = seg.getPoints()[0];
 			Point2D secondP = seg.getPoints()[1];
-			StdDraw_Ex4.line(firstP.x(), firstP.y(), secondP.x(), secondP.y() );
+			StdDraw.line(firstP.x(), firstP.y(), secondP.x(), secondP.y() );
 			}
 		if(gs instanceof Rect2D) {
             Rect2D r = (Rect2D)gs;
             double[] x = r.getx();
             double[] y = r.gety();
             if(isFill) {
-                StdDraw_Ex4.filledPolygon(x, y);
+                StdDraw.filledPolygon(x, y);
             }
             else { 
-                StdDraw_Ex4.polygon(x, y);
+                StdDraw.polygon(x, y);
                 }    
         }	
 		if(gs instanceof Triangle2D) {
@@ -125,10 +123,10 @@ public class Ex4 implements Ex4_GUI{
 			double[] x = {a.x(), b.x(), c.x()}; 
 			double[] y = {a.y(), b.y(), c.y()};
 			if(isFill) {
-				StdDraw_Ex4.filledPolygon(x, y);
+				StdDraw.filledPolygon(x, y);
 			}
 			else { 
-				StdDraw_Ex4.polygon(x, y);
+				StdDraw.polygon(x, y);
 			}
 		}
 		if(gs instanceof Polygon2D) {
@@ -140,10 +138,10 @@ public class Ex4 implements Ex4_GUI{
 				y[i]= poly.getPoints()[i].y();
 			}
 			if(isFill) {
-				StdDraw_Ex4.filledPolygon(x, y);
+				StdDraw.filledPolygon(x, y);
 			}
 			else { 
-				StdDraw_Ex4.polygon(x, y);
+				StdDraw.polygon(x, y);
 			}
 		}
 	}
@@ -151,7 +149,7 @@ public class Ex4 implements Ex4_GUI{
 	// Extracts out of the main list (shape collection) - which color should the shape be drawn.
 	private void setColor(Color c) { 
 		for(int i=0;i<_shapes.size();i++) {
-			GUI_Shapeable s = _shapes.get(i);
+			GUIShapeable s = _shapes.get(i);
 			if(s.isSelected()) {
 				s.setColor(c);
 			}
@@ -160,7 +158,7 @@ public class Ex4 implements Ex4_GUI{
 	// Extracts out of the main list (shape collection) - if the shape should be drawn filled or not- and applies that to the drawing.
 	private void setFill() { 
 		for(int i=0;i<_shapes.size();i++) {
-			GUI_Shapeable s = _shapes.get(i);
+			GUIShapeable s = _shapes.get(i);
 			if(s.isSelected()) {
 				s.setFilled(_fill);
 			}
@@ -189,7 +187,7 @@ public class Ex4 implements Ex4_GUI{
      		
      		JFileChooser fileChooser = new JFileChooser();
      		fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
-     		int result = fileChooser.showSaveDialog(StdDraw_Ex4.getFrame());
+     		int result = fileChooser.showSaveDialog(StdDraw.getFrame());
      			if (result == JFileChooser.APPROVE_OPTION) {
 
      				try {
@@ -205,7 +203,7 @@ public class Ex4 implements Ex4_GUI{
      	if(p.equals("Load")) {
      		
 			JFileChooser fileChooser = new JFileChooser(); // Building a file that will read the content.
-			int result = fileChooser.showOpenDialog(StdDraw_Ex4.getFrame());
+			int result = fileChooser.showOpenDialog(StdDraw.getFrame());
 			if (result == JFileChooser.APPROVE_OPTION) {
 				try {
 					fileChooser.getSelectedFile().getAbsoluteFile().createNewFile(); // need to be fixed
@@ -232,7 +230,7 @@ public class Ex4 implements Ex4_GUI{
      // The shape/s that were selected on screen - will be removed.
         if(p.equals("Remove")) { 
             for(int i=0;i<_shapes.size();i++) {
-                GUI_Shapeable s = _shapes.get(i);
+                GUIShapeable s = _shapes.get(i);
                 if(s!=null && s.isSelected()) {
                     _shapes.removeElementAt(i);
                     i--;				// Every time we remove an element - all the following will move back one. 
@@ -245,35 +243,35 @@ public class Ex4 implements Ex4_GUI{
         
         // This is all the way of sorting - so that if one shape is blocking the other - it will show upon the choosing of the parameter: and display it in order.
         if(p.equals("ByArea")) {// According to the largest area.
-            ShapeComp c = new ShapeComp(Ex4_Const.Sort_By_Area);
+            ShapeComp c = new ShapeComp(DrawingConstants.Sort_By_Area);
             _shapes.sort(c);
         }
         if(p.equals("ByAntiArea")) {// According to the smallest area.
-            ShapeComp c = new ShapeComp(Ex4_Const.Sort_By_Anti_Area);
+            ShapeComp c = new ShapeComp(DrawingConstants.Sort_By_Anti_Area);
             _shapes.sort(c);
             }
         if(p.equals("ByPerimeter")) {// According to the largest parimeter.
-            ShapeComp c = new ShapeComp(Ex4_Const.Sort_By_Perimeter);
+            ShapeComp c = new ShapeComp(DrawingConstants.Sort_By_Perimeter);
             _shapes.sort(c);
             }
         if(p.equals("ByAntiPerimeter")) {// According to the smallest parimeter.
-            ShapeComp c = new ShapeComp(Ex4_Const.Sort_By_Anti_Perimeter);
+            ShapeComp c = new ShapeComp(DrawingConstants.Sort_By_Anti_Perimeter);
             _shapes.sort(c);
             }
         if(p.equals("ByToString")) {// According to the first in alphabetical order.
-            ShapeComp c = new ShapeComp(Ex4_Const.Sort_By_toString);
+            ShapeComp c = new ShapeComp(DrawingConstants.Sort_By_toString);
             _shapes.sort(c);
             }
         if(p.equals("ByAntiToString")) {// According to the opposite of alphabetical order.
-            ShapeComp c = new ShapeComp(Ex4_Const.Sort_By_Anti_toString);
+            ShapeComp c = new ShapeComp(DrawingConstants.Sort_By_Anti_toString);
             _shapes.sort(c);
             }
-        if(p.equals("ByTag")) {// NEED TO CHANGE
-            ShapeComp c = new ShapeComp(Ex4_Const.Sort_By_Tag);
+        if(p.equals("ByTag")) {
+            ShapeComp c = new ShapeComp(DrawingConstants.Sort_By_Tag);
             _shapes.sort(c);
             }
-        if(p.equals("ByAntiTag")) {// AASSS WEEELLL
-            ShapeComp c = new ShapeComp(Ex4_Const.Sort_By_Anti_Tag);
+        if(p.equals("ByAntiTag")) {
+            ShapeComp c = new ShapeComp(DrawingConstants.Sort_By_Anti_Tag);
             _shapes.sort(c);
             }
         
@@ -338,7 +336,7 @@ public class Ex4 implements Ex4_GUI{
 			if(_mode.equals("Rotate")) {
                 if(this._p1 != null) {
                 for(int i=0;i<_shapes.size();i++) {
-                    GUI_Shapeable s = _shapes.get(i);
+                    GUIShapeable s = _shapes.get(i);
                     GeoShapeable g = s.getShape();
                     if(g!=null && s.isSelected()) {
                         double degree = Math.atan2(p.y()-this._p1.y() ,p.x()-this._p1.x());
@@ -356,7 +354,7 @@ public class Ex4 implements Ex4_GUI{
 			// Basiclly - we are just trying to get to that shape's class and scale the points.
 			if(_mode.equals("Scale_90%")) {  
                 for(int i=0;i<_shapes.size();i++) { 
-                    GUI_Shapeable s = _shapes.get(i);
+                    GUIShapeable s = _shapes.get(i);
                     GeoShapeable g = s.getShape();
                     if(g!=null && s.isSelected()) {
                         g.scale(p, 0.9);
@@ -367,7 +365,7 @@ public class Ex4 implements Ex4_GUI{
             
             if(_mode.equals("Scale_110%")) {
                 for(int i=0;i<_shapes.size();i++) {
-                    GUI_Shapeable s = _shapes.get(i);
+                    GUIShapeable s = _shapes.get(i);
                     GeoShapeable g = s.getShape();
                     if(g!=null && s.isSelected()) {
                         g.scale(p, 1.1);
@@ -412,9 +410,9 @@ public class Ex4 implements Ex4_GUI{
 	// Copies the same shape.
 	private void copy() {
         for(int i=0;i<_shapes.size();i++) {
-            GUI_Shapeable s = _shapes.get(i);
+            GUIShapeable s = _shapes.get(i);
             if(s!=null && s.isSelected()) {
-                GUI_Shapeable new_s = s.copy();
+                GUIShapeable new_s = s.copy();
                 _shapes.add(new_s);    
                 new_s.setSelected(false);
                 new_s.getShape().move(_p1);
@@ -424,7 +422,7 @@ public class Ex4 implements Ex4_GUI{
 	// This function helps us with the choosing of each shape on the screen.
 	private void select(Point2D p) {
 		for(int i=0;i<_shapes.size();i++) {
-			GUI_Shapeable s = _shapes.get(i);
+			GUIShapeable s = _shapes.get(i);
 			GeoShapeable g = s.getShape();
 			if(g!=null && g.contains(p)) { // It checks if the point that was clicked is within the shape.
 				s.setSelected(!s.isSelected());
@@ -434,7 +432,7 @@ public class Ex4 implements Ex4_GUI{
 	
 	private void move() {// 
 		for(int i=0;i<_shapes.size();i++) {
-			GUI_Shapeable s = _shapes.get(i);
+			GUIShapeable s = _shapes.get(i);
 			GeoShapeable g = s.getShape();
 			if(s.isSelected() && g!=null) {
 				g.move(_p1);
@@ -478,8 +476,8 @@ public class Ex4 implements Ex4_GUI{
 	// until officially deciding the actual shape.
 	public void mouseMoved(MouseEvent e) { 
 		if(_p1!=null) {						
-			double x1 = StdDraw_Ex4.mouseX(); 
-			double y1 = StdDraw_Ex4.mouseY();
+			double x1 = StdDraw.mouseX(); 
+			double y1 = StdDraw.mouseY();
 			GeoShapeable gs = null;
 	
 			Point2D p = new Point2D(x1,y1);
@@ -527,18 +525,16 @@ public class Ex4 implements Ex4_GUI{
 		}
 	}
 	@Override
-	public ShapeCollectionable getShape_Collection() {
-		// TODO Auto-generated method stub
+	public ShapeCollectionInterface getShape_Collection() {
 		return this._shapes;
 	}
 	@Override
-	public void show() {show(Ex4_Const.DIM_SIZE); }
+	public void show() {show(DrawingConstants.DIM_SIZE); }
 	@Override
 	public String getInfo() {
-		// TODO Auto-generated method stub
 		String ans = "";
 		for(int i=0;i<_shapes.size();i++) {
-			GUI_Shapeable s = _shapes.get(i);
+			GUIShapeable s = _shapes.get(i);
 			ans +=s.toString()+"\n";
 		}
 		return ans;

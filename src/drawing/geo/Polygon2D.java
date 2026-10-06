@@ -1,4 +1,4 @@
-package Exe.Ex4.geo;
+package drawing.geo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.awt.geom.Line2D;
@@ -26,7 +26,6 @@ import java.awt.geom.Line2D;
 	
 	@Override
 	public boolean contains(Point2D ot) {
-		// TODO Auto-generated method stub
 		// Ultimately the purpose of the function will be to see how many times dose the imaginative 
 		// line of  "ot" (to the right ) cross the the sides of the shape. If it is an even number
 		// that means the point is outside the shape. If uneven - it's in.
@@ -82,7 +81,6 @@ import java.awt.geom.Line2D;
 	@Override
 	// Gauss's shoe lace method.  https://he.wikipedia.org/wiki/%D7%A0%D7%95%D7%A1%D7%97%D7%AA_%D7%94%D7%A9%D7%A8%D7%95%D7%9A נוסחת השרוך
 	public double area() {
-		// TODO Auto-generated method stub
 	if (pointsP.size()<2) return 0;	// In case the it's just a segment, so as not to go out of bounds. 
 	
 	double sum =0;
@@ -100,7 +98,6 @@ import java.awt.geom.Line2D;
 	@Override
 	public double perimeter() { 
 		// The sum of the distances between all two adjacent points.
-		// TODO Auto-generated method stub
 		double sum= 0;
 		for (int i=1; i< pointsP.size(); i++)
 		sum += pointsP.get(i).distance(pointsP.get(i-1));
@@ -109,7 +106,6 @@ import java.awt.geom.Line2D;
 	}
 	@Override
 	public Point2D[] getPoints() {
-		// TODO Auto-generated method stub
 		 this.polyP = new  Point2D[this.pointsP.size()];
 		for (int i=0; i<this.pointsP.size();i++) {
 			polyP[i] = pointsP.get(i);
@@ -121,21 +117,18 @@ import java.awt.geom.Line2D;
 	@Override
     // moving each point
     public void move(Point2D vec) {
-        // TODO Auto-generated method stub
         for (int i= 0;i<pointsP.size();i++) {
             this.pointsP.get(i).move(vec);
         }
     }
 	@Override
 	public GeoShapeable copy() {
-		// TODO Auto-generated method stub
 		return new Polygon2D( this.pointsP);
 	
 	}
 
 	 @Override
 	    public void scale(Point2D center, double ratio) {
-	        // TODO Auto-generated method stub
 	         for (int i= 0;i<pointsP.size();i++) {
 	             this.pointsP.get(i).scale(center,ratio);
 	         }
@@ -144,7 +137,6 @@ import java.awt.geom.Line2D;
 	    }
 	 @Override
 	    public void rotate(Point2D center, double angleDegrees) {
-	        // TODO Auto-generated method stub
 	         for (int i= 0;i<pointsP.size();i++) {
 	             this.pointsP.get(i).rotate(center,angleDegrees);
 	         }

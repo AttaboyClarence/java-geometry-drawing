@@ -1,22 +1,22 @@
-package Exe.Ex4;
+package drawing;
 /**
  * This class implements the GUI_shape.
- * Ex4: you should implement this class!
+ * DrawingApp: you should implement this class!
  * @author I2CS
  */
 import java.awt.Color;
 import java.util.ArrayList;
 
-import Exe.Ex4.geo.Circle2D;
-import Exe.Ex4.geo.GeoShapeable;
-import Exe.Ex4.geo.Point2D;
-import Exe.Ex4.geo.Polygon2D;
-import Exe.Ex4.geo.Rect2D;
-import Exe.Ex4.geo.Segment2D;
-import Exe.Ex4.geo.Triangle2D;
+import drawing.geo.Circle2D;
+import drawing.geo.GeoShapeable;
+import drawing.geo.Point2D;
+import drawing.geo.Polygon2D;
+import drawing.geo.Rect2D;
+import drawing.geo.Segment2D;
+import drawing.geo.Triangle2D;
 
 
-public class GUIShape implements GUI_Shapeable{
+public class GUIShape implements GUIShapeable{
 	private GeoShapeable _g = null;
 	private boolean _fill;
 	private Color _color;
@@ -79,8 +79,8 @@ public class GUIShape implements GUI_Shapeable{
 	}
 
 	@Override
-	public GUI_Shapeable copy() {
-		GUI_Shapeable cp = new GUIShape(this);
+	public GUIShapeable copy() {
+		GUIShapeable cp = new GUIShape(this);
 		return cp;
 	}
 	@Override
@@ -162,7 +162,6 @@ public class GUIShape implements GUI_Shapeable{
 	}
 	@Override
 	public void setShape(GeoShapeable g) {
-		// TODO Auto-generated method stub
 		this._g = g;
 
 	}

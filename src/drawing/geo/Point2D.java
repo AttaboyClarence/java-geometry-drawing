@@ -1,12 +1,12 @@
 
-package Exe.Ex4.geo;
+package drawing.geo;
 
-import Exe.Ex4.Ex4_Const;
+import drawing.DrawingConstants;
 
 /**
  * This class represents a 2D point in the plane.
  * Do NOT change this class! It would be used as is for testing.
- * Ex4: you should edit and update this class!
+ * DrawingApp: you should edit and update this class!
  * @author boaz.benmoshe
  */
 
@@ -71,7 +71,7 @@ public class Point2D{
     }
     public boolean close2equals(Point2D p2)
     {
-        return close2equals(p2, Ex4_Const.EPS);
+        return close2equals(p2, DrawingConstants.EPS);
     }
     /**
      * This method returns the vector between this point and the target point. The vector is represented as a Point2D.

@@ -1,4 +1,4 @@
-package Exe.Ex4.geo;
+package drawing.geo;
 
 /**
  * This interface represents a geometric (2D) shape in the plane. 
@@ -7,7 +7,7 @@ package Exe.Ex4.geo;
  * perimeter, toString, a method (getPoints) for getting the points representing this 
  * GeoShape, a rotation method and a rescale method.
  * 
- * Ex4: you should NOT change this interface!
+ * DrawingApp: you should NOT change this interface!
  * @author boaz.benmoshe
  */
 

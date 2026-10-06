@@ -1,4 +1,4 @@
-package Exe.Ex4;
+package drawing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,13 +10,13 @@ import javax.naming.InitialContext;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.css.RGBColor;
 
-import Exe.Ex4.geo.Circle2D;
-import Exe.Ex4.geo.GeoShapeable;
-import Exe.Ex4.geo.Point2D;
-import Exe.Ex4.geo.Polygon2D;
-import Exe.Ex4.geo.Rect2D;
-import Exe.Ex4.geo.Segment2D;
-import Exe.Ex4.geo.Triangle2D;
+import drawing.geo.Circle2D;
+import drawing.geo.GeoShapeable;
+import drawing.geo.Point2D;
+import drawing.geo.Polygon2D;
+import drawing.geo.Rect2D;
+import drawing.geo.Segment2D;
+import drawing.geo.Triangle2D;
 
 
 	

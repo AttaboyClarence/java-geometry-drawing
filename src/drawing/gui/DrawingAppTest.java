@@ -1,4 +1,4 @@
-package Exe.Ex4.gui;
+package drawing.gui;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,17 +7,17 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-import Exe.Ex4.GUIShape;
-import Exe.Ex4.ShapeCollection;
-import Exe.Ex4.geo.Circle2D;
-import Exe.Ex4.geo.GeoShapeable;
-import Exe.Ex4.geo.Point2D;
-import Exe.Ex4.geo.Polygon2D;
-import Exe.Ex4.geo.Rect2D;
-import Exe.Ex4.geo.Segment2D;
-import Exe.Ex4.geo.Triangle2D;
+import drawing.GUIShape;
+import drawing.ShapeCollection;
+import drawing.geo.Circle2D;
+import drawing.geo.GeoShapeable;
+import drawing.geo.Point2D;
+import drawing.geo.Polygon2D;
+import drawing.geo.Rect2D;
+import drawing.geo.Segment2D;
+import drawing.geo.Triangle2D;
 
-class Ex4Test {
+class DrawingAppTest {
     
     Point2D p1 = new Point2D(2.4,3.7);
     Point2D p2 = new Point2D(10.2,15.3);
@@ -41,7 +41,7 @@ class Ex4Test {
     
     ShapeCollection shapes = new ShapeCollection();
 
-    Ex4 Ex4_test = Ex4.getInstance();
+    DrawingApp Ex4_test = DrawingApp.getInstance();
     
 @Test
     /**
@@ -101,7 +101,7 @@ class Ex4Test {
 
     @Test
     /**
-     * tests that the function returns the correct string that represents the collection in Ex4
+     * tests that the function returns the correct string that represents the collection in DrawingApp
      */
     void testGetInfo() {
         
