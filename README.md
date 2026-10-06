@@ -4,7 +4,7 @@ An interactive Java drawing application built around 2D geometry, shape transfor
 
 Developed as part of an introductory Computer Science course. The assignment provided the drawing framework and several interfaces; my implementation focused on the geometry, algorithms, collection behavior, and application logic built on top of it.
 
-<img src="docs/screenshot.png" alt="Java Geometry Drawing" width="500">
+<img src="docs/screenshot.png" alt="Java Geometry Drawing" width="400">
 
 ## Features
 
