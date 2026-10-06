@@ -23,13 +23,13 @@ public class Main {
 	}
 	// Minimal empty frame (no shapes)
 	public static void t1() {
-		DrawingApp ex4 = DrawingApp.getInstance();
-		ex4.show();
+		DrawingApp app = DrawingApp.getInstance();
+		app.show();
 	} 
 	// Two simple circles
 	public static void t2() {
-		DrawingApp ex4 = DrawingApp.getInstance();
-		ShapeCollectionInterface shapes = ex4.getShape_Collection();
+		DrawingApp app = DrawingApp.getInstance();
+		ShapeCollectionInterface shapes = app.getShape_Collection();
 		Point2D p1 = new Point2D(3,4);
 		Point2D p2 = new Point2D(6,8);
 		Circle2D c1 = new Circle2D(p1,2);
@@ -38,17 +38,17 @@ public class Main {
 		GUIShapeable gs2 = new GUIShape(c2, false, Color.blue, 2);
 		shapes.add(gs1);
 		shapes.add(gs2);
-		ex4.show();
-		System.out.print(ex4.getInfo());
+		app.show();
+		System.out.print(app.getInfo());
 	}
 	// Loads a file from file 'sample_drawing.txt' (Circles only).
 	public static void t3() {
-		DrawingApp ex4 = DrawingApp.getInstance();
-		ShapeCollectionInterface shapes = ex4.getShape_Collection();
+		DrawingApp app = DrawingApp.getInstance();
+		ShapeCollectionInterface shapes = app.getShape_Collection();
 		String file = "sample_drawing.txt"; 
 		shapes.load(file);
-		ex4.init(shapes);
-		ex4.show();
+		app.init(shapes);
+		app.show();
 	}
 
 }

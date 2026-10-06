@@ -38,7 +38,7 @@ public class DrawingApp implements DrawingGUI{
 	private  boolean _fill = false;
 	private  String _mode = "";
 	private  Point2D _p1, _p2;
-	private  static DrawingApp _winEx4 = null;
+	private  static DrawingApp _instance = null;
 	private static int _tag = 1; // We chose that every time  we create a new shape independently - we will get a new tag. A shape created as a copy - will not get a new tag but will have an equal to the one created from.
 	private DrawingApp() {
 			init(null);
@@ -60,10 +60,10 @@ public class DrawingApp implements DrawingGUI{
 		drawShapes();
 	}
 	public static DrawingApp getInstance() {
-		if(_winEx4 ==null) {
-			_winEx4 = new DrawingApp();
+		if(_instance ==null) {
+			_instance = new DrawingApp();
 		}
-		return _winEx4;
+		return _instance;
 	}
 	// This is the main function that gathers all the details on the major list - shape collection, and draws.
 	public void drawShapes() {
@@ -206,7 +206,7 @@ public class DrawingApp implements DrawingGUI{
 			int result = fileChooser.showOpenDialog(StdDraw.getFrame());
 			if (result == JFileChooser.APPROVE_OPTION) {
 				try {
-					fileChooser.getSelectedFile().getAbsoluteFile().createNewFile(); // need to be fixed
+					fileChooser.getSelectedFile().getAbsoluteFile().createNewFile();
 				} catch (IOException e) {
 
 					e.printStackTrace();
