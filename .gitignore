@@ -1,0 +1,7 @@
+bin/
+.classpath
+.project
+.settings/
+*.class
+
+drawing2.txt
